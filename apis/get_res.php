@@ -1,15 +1,17 @@
 <?php
 include("connection.php");
 
-$query = $mysqli->prepare("SELECT name, location, ratings from restaurants");
+$query = $mysqli->prepare("SELECT res_id, img, name, location, ratings from restaurants");
 
 $query->execute();
 $array = $query->get_result();
 
 $response = [];
 
-while($todo = $array->fetch_assoc()){
-    $response[] = $todo;
+while($a = $array->fetch_assoc()){
+    $response[] = $a;
+ 
 } 
 echo json_encode($response);
+
 ?>
