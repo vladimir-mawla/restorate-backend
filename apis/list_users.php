@@ -1,11 +1,7 @@
 <?php
-
 include("connection.php");
 
-$res_id = $_POST['res_id'];
-
-$query = $mysqli->prepare("SELECT res_id, name, img, location, ratings from restaurants WHERE res_id=?");
-$query->bind_param("i", $res_id);
+$query = $mysqli->prepare("SELECT user_id, full_name, username from users");
 
 $query->execute();
 $array = $query->get_result();
