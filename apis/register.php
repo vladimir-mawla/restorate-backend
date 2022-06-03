@@ -14,6 +14,14 @@ $query->execute();
 $response = [];
 $response["success"] = true;
 
+$query = $mysqli->prepare("select user_id from users where username=?");
+$query->bind_param("s",$username);
+$query->execute();
+
+$query->store_result();
+$query->bind_result($user_id);
+$query->fetch();
+$response["user_id"] = $user_id;
 echo json_encode($response);
 
 ?>
